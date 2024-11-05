@@ -1,6 +1,6 @@
 const express = require("express");
-const {dataController} = require("./Routes/data.route");
 const connection = require("./config/db")
+const router  = require("./Routes/data.route")
 const cors = require("cors");
 
 const app = express();
@@ -15,7 +15,8 @@ app.get("/",(req,res)=>{
     res.send("BASED API ENDPOINT")
 })
 
-app.post("/data",dataController)
+app.use("/",router); 
+
 
 app.listen(port,async()=>{
 try {

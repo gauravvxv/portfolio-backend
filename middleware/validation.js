@@ -2,6 +2,10 @@ const validationForm = (req,res,next)=> {
 
     const {fullName , number , email, message} = req.body;
 
+    if(!fullName || !number || !email || !message){
+        return res.status(400).json({ error: 'Please fill all the fields' });
+    }
+
     if(!fullName || typeof fullName !== 'string'){
         return res.status(400).json({ error: 'Name is required' });
     }
